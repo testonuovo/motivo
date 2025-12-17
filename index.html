@@ -1,124 +1,26 @@
-<!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Messaggio Magico 1.1</title>
 <style>
-  body { 
-    font-family: Arial; 
-    background: blue; 
-    color: #eee; 
-    text-align: center; 
-    padding-top: 50px; 
-  }
-  h1 { color: red; }
-
-  button { 
-    padding: 10px 20px; 
-    font-size: 16px; 
-    cursor: pointer; 
-    border-radius: 19px; 
-    background:red; 
-    color: white; 
-    transition: background 0.5s, transform 0.2s;
-   }
-
-  button:hover { 
-    background: orange; 
-    transform: scale(1.1) rotate(-2deg);
-    animation: shake 0.3s;
-  }
-
-  @keyframes shake {
-    0% { transform: scale(1.1) rotate(-2deg);}
-    50% { transform: scale(1.1) rotate(2deg);}
-    70% { transform: scale(1.1) rotate(-2deg);}
-    90% { transform: scale(1.1) rotate(2deg);}
-    100% { transform: scale(1.1) rotate(-2deg);}
-  }
-
-  #messaggio, #orario, #nuovo_messaggio { 
-    margin-top: 20px; 
-    font-size: 1.2em; 
-    color: yellow; 
-    opacity: 0;
-    transition:opacity 0.9s;
-  }
+body{
+  background-color:blue;
+}
+h1{
+  color:red;
+}
+button{
+  background-color:blue;
+  color:white;
+  border-radius:19px;
+}
 </style>
+<title>motivo1.1.js</title>
 </head>
 <body>
-
-<h1>Messaggio Magico 1.1</h1>
-<p>Clicca il pulsante per un messaggio motivazionale!</p>
-<button onclick="mostramessaggioeorario('messaggio','orario')">Cliccami</button>
-<p id="messaggio"></p>
-<p id="orario"></p>
-
-<button onclick="nuovoMessaggioMagico()">Leggi un nuovo messaggio magico</button>
-<p id="nuovo_messaggio"></p>
-
-<script>
-const messaggiMotivazionali = [
-  "Non ti arrendere, credi in te stesso!",
-  "Ogni giorno è una nuova opportunità!",
-  "Sii forte, anche quando è difficile!",
-  "La tua determinazione può tutto!",
-  "Continua a provare, il successo arriverà!",
-  "Non ti arrendere, neanche quando sembra che sia tutto finito, perché è proprio quando sembra che sia tutto finito che è proprio allora che tutto ha inizio",
-  "Devi essere un uomo di fede e se succede qualcosa ti difendi",
-  "Devi avere fede anche nelle situazioni difficili della vita perché se credi non sei mai solo",
-  "Devi avere fede e devi credere in Dio, non nell'uomo"
-];
-
-function mostramessaggioeorario(idMessaggio, idOrario) {
-  const elementoMessaggio = document.getElementById(idMessaggio);
-  const elementoOrario = document.getElementById(idOrario);
-
-  if(elementoMessaggio){
-    const messaggio = messaggiMotivazionali[Math.floor(Math.random() * messaggiMotivazionali.length)];
-    elementoMessaggio.textContent = messaggio;
-    elementoMessaggio.style.opacity = 1;
-
-    // Colore casuale e animazione
-    const colori = ["yellow", "lightgreen", "orange", "pink", "cyan"];
-    elementoMessaggio.style.color = colori[Math.floor(Math.random() * colori.length)];
-    elementoMessaggio.style.transition = "transform 0.3s";
-    elementoMessaggio.style.transform = "scale(1.2)";
-    setTimeout(() => { elementoMessaggio.style.transform = "scale(1)"; }, 300);
-  }
-
-  if(elementoOrario){
-    function aggiornaOrario() {
-      const ora = new Date();
-      const ore = ora.getHours().toString().padStart(2,'0');
-      const minuti = ora.getMinutes().toString().padStart(2,'0');
-      const secondi = ora.getSeconds().toString().padStart(2,'0');
-      elementoOrario.textContent = `Ora: ${ore}:${minuti}:${secondi}`;
-
-      // Colore dinamico dell'orario
-      const colori = ["yellow", "lightgreen", "orange", "pink", "cyan"];
-      elementoOrario.style.color = colori[Math.floor(Math.random() * colori.length)];
-      elementoOrario.style.opacity = 1;
-    }
-    aggiornaOrario();
-    setInterval(aggiornaOrario, 1000);
-  }
-}
-
-function nuovoMessaggioMagico() {
-  const elemento = document.getElementById("nuovo_messaggio");
-  const messaggio = messaggiMotivazionali[Math.floor(Math.random() * messaggiMotivazionali.length)];
-  elemento.textContent = messaggio;
-  elemento.style.opacity = 1;
-
-  // Animazione messaggio
-  elemento.style.transition = "opacity 0.5s, transform 0.3s";
-  elemento.style.transform = "scale(1.2)";
-  setTimeout(() => { elemento.style.transform = "scale(1)"; }, 300);
-
-  alert("Credi in te stesso e prosegui per il tuo cammino!");
-}
-</script>
-
+<h1>motivo 1.1.js</h1>
+<h1>libreria motivazionale</h1>
+<button onclick="window.open('https://testonuovo.github.io/motivo-js/')">
+vai alla demo
+</button>
+<script src="https://testonuovo.github.io/motivo-js/motivo%201.1.js"></script>
 </body>
-</html>
+</html
