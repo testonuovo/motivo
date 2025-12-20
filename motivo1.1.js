@@ -1,45 +1,63 @@
-<style>
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 19px;
-  background: red;
-  color: white;
-  transition: background 0.3s, transform 0.2s;
-  transition: background 0,5s, transform 0.3s;
-}
+const Motivo = (function () {
 
-button:hover {
-  background: orange;
-  transform: scale(1.1) rotate(-2deg);
-  animation: shake 0.3s;
-}
+  // Messaggi motivazionali
+  const messaggi = [
+    "Non ti arrendere",
+    "Credi in te stesso",
+    "Sei più forte di quanto pensi",
+    "La calma è forza",
+    "Un passo alla volta",
+    "Credi in Dio in ogni situazione della vita",
+    "La vita è fatta di salite e di cadute, di successi e di fallimenti",
+    "Ma alla fine il vero successo è quello che hai dentro al cuore",
+    "Sorridi anche se sei triste",
+    "Non sai mai chi può innamorarsi del tuo sorriso",
+    "Nella vita non è importante non cadere mai",
+    "Ma sapersi rialzare dopo ogni caduta"
+  ];
 
-@keyframes shake {
-  0% { transform: scale(1.1) rotate(-2deg);}
-  50% { transform: scale(1.1) rotate(2deg);}
-  100% { transform: scale(1.1) rotate(-2deg);}
-}
+  // Funzione per scegliere un messaggio casuale
+  function random() {
+    const index = Math.floor(Math.random() * messaggi.length);
+    return messaggi[index];
+  }
 
-#orario {
-  font-weight: bold;
-  transition: color 0.5s;
-}
-</style>
-<script>
-function aggiornaOrario() {
-  const ora = new Date();
-  const ore = ora.getHours().toString().padStart(2,'0');
-  const minuti = ora.getMinutes().toString().padStart(2,'0');
-  const secondi = ora.getSeconds().toString().padStart(2,'0');
-  const elementoOrario = document.getElementById("orario");
-  elementoOrario.textContent = `Ora: ${ore}:${minuti}:${secondi}`;
-  
-  // Cambio colore dinamico
-  const colori = ["yellow", "lightgreen", "orange", "pink", "cyan"];
-  elementoOrario.style.color = colori[Math.floor(Math.random() * colori.length)];
-}
+  // Mostra un messaggio in un elemento HTML
+  function mostra(idMsg) {
+    const elem = document.getElementById(idMsg);
+    if (!elem) return;
+    elem.style.opacity = 0; // effetto dissolvenza
+    setTimeout(() => {
+      elem.textContent = random();
+      elem.style.opacity = 1;
+    }, 200);
+  }
 
-setInterval(aggiornaOrario, 1000);
-</script>
+  // Mostra l'orologio con data e ora aggiornati ogni secondo
+  function orologio(id) {
+    const elem = document.getElementById(id);
+    if (!elem) return;
+
+    function aggiorna() {
+      const t = new Date();
+      const giorno = String(t.getDate()).padStart(2, "0");
+      const mese = String(t.getMonth() + 1).padStart(2, "0");
+      const anno = t.getFullYear();
+      const ore = String(t.getHours()).padStart(2, "0");
+      const minuti = String(t.getMinutes()).padStart(2, "0");
+      const secondi = String(t.getSeconds()).padStart(2, "0");
+
+      elem.textContent = `${giorno}/${mese}/${anno} - ${ore}:${minuti}:${secondi}`;
+    }
+
+    aggiorna(); // aggiorna subito
+    setInterval(aggiorna, 1000); // aggiorna ogni secondo
+  }
+
+  return {
+    mostra,
+    orologio,
+    version: "1.2"
+  };
+
+})();
